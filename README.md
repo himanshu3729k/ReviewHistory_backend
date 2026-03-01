@@ -45,7 +45,7 @@ docker-compose exec web alembic upgrade head
 Open the following URL in your browser to view the interactive Swagger UI:
 
 ```
-http://localhost:8000/docs
+https://reviews-api-olqp.onrender.com/docs
 ```
 
 ## 🧠 Architectural Highlights
