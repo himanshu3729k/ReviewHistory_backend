@@ -13,6 +13,11 @@ from alembic import context
 # access to the values within the .ini file in use.
 config = context.config
 
+# Override the database URL if we are in the cloud
+cloud_db_url = os.environ.get("DATABASE_URL")
+if cloud_db_url:
+    config.set_main_option("sqlalchemy.url", cloud_db_url)
+
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 if config.config_file_name is not None:
