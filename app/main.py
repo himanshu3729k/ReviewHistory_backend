@@ -41,6 +41,7 @@ def get_trends(db: Session = Depends(get_db)):
     )
     return results
 
+
 @app.get("/reviews/", response_model=List[schemas.ReviewResponse])
 def get_category_reviews(
     category_id: int = Query(...),
