@@ -1,11 +1,16 @@
+import os
 from celery import Celery
 from .database import SessionLocal
 from .models import AccessLog
+from .llm_service import analyze_review_sentiment
+from .models import ReviewHistory
+
+REDIS_URL = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
 
 celery_app = Celery(
     "worker",
-    broker="redis://localhost:6379/0",
-    backend="redis://localhost:6379/0"
+    broker=REDIS_URL,
+    backend=REDIS_URL
 )
 
 @celery_app.task
