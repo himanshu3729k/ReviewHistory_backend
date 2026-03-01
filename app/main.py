@@ -71,7 +71,7 @@ def get_category_reviews(
 
     # Fill missing tone/sentiment using LLM [cite: 56]
     for rev in reviews:
-        if rev.tone is None or rev.sentiment is None:
+        if rev.tone is None or rev.sentiment is None or rev.tone == "Error":
             t, s = analyze_review_sentiment(rev.text, rev.stars)
             rev.tone, rev.sentiment = t, s
             db.add(rev)
